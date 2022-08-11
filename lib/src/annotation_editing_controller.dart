@@ -58,7 +58,6 @@ class AnnotationEditingController extends TextEditingController {
   TextSpan buildTextSpan(
       {BuildContext? context, TextStyle? style, bool? withComposing}) {
     // var children = <InlineSpan>[];
-    log('message ::: _pattern :: ${_pattern}');
     final children = FormattedTextUtils.formattedSpans(
       context!,
       text,

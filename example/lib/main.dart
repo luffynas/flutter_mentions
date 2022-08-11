@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mentions/flutter_mentions.dart';
+import 'package:formatted_text/formatted_text.dart';
 
 void main() {
   runApp(MyApp());
@@ -41,6 +42,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
+          FormattedText(
+            'helo @[nas:61as61fsa] (__fayeedP__) #good# ~adfadf~',
+          ),
           RaisedButton(
             child: Text('Get Text'),
             onPressed: () {
@@ -128,10 +132,50 @@ class _MyHomePageState extends State<MyHomePage> {
                   matchAll: true,
                 ),
               ],
+              enableInteractiveSelection: true,
             ),
+          ),
+          Row(
+            children: [
+              TextButton(
+                onPressed: () {
+                  _formatedText('*');
+                },
+                child: Text('Bold'),
+              ),
+              TextButton(
+                onPressed: () {
+                  _formatedText('_');
+                },
+                child: Text('Italic'),
+              ),
+              TextButton(
+                onPressed: () {
+                  _formatedText('#');
+                },
+                child: Text('Underline'),
+              ),
+              TextButton(
+                onPressed: () {
+                  _formatedText('~');
+                },
+                child: Text('Strikethrough'),
+              ),
+            ],
           ),
         ],
       ),
     );
+  }
+
+  _formatedText(String pattern) {
+    var controller = key.currentState!.controller;
+    if (controller!.selection.textInside(controller.text).isNotEmpty) {
+      controller.text = controller.selection.textBefore(controller.text) +
+          pattern +
+          controller.selection.textInside(controller.text) +
+          pattern +
+          controller.selection.textAfter(controller.text);
+    }
   }
 }

@@ -319,6 +319,14 @@ class FlutterMentionsState extends State<FlutterMentions> {
         TextSelection.fromPosition(TextPosition(offset: nextCursorPosition));
   }
 
+  void onTextBold() {
+    controller!.selection.textBefore(controller!.text) +
+        '*' +
+        controller!.selection.textInside(controller!.text) +
+        '*' +
+        controller!.selection.textAfter(controller!.text);
+  }
+
   void suggestionListerner() {
     final cursorPos = controller!.selection.baseOffset;
 
@@ -481,6 +489,10 @@ class FlutterMentionsState extends State<FlutterMentions> {
                 scrollPadding: widget.scrollPadding,
                 scrollPhysics: widget.scrollPhysics,
                 controller: controller,
+                selectionControls: FormattedTextSelectionControls(
+                  actions:
+                      FormattedTextDefaults.formattedTextToolbarDefaultActions,
+                ),
               ),
             ),
             ...widget.trailing,

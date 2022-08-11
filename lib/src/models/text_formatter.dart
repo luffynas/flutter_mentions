@@ -20,7 +20,7 @@ class FormattedTextFormatter2 extends FormattedTextFormatter {
   const FormattedTextFormatter2({
     required this.patternChars,
     required this.style,
-  })  : pattern = r'\' + patternChars + '([^\\' + patternChars + ']+)',
+  })  : pattern = r'\@\[([^:]+):([^\]]+)\]',
         super(patternChars: patternChars, style: style);
 
   final String pattern;

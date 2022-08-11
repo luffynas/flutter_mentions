@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 import '../constants/defaults.dart';
@@ -16,14 +14,9 @@ mixin FormattedTextUtils {
     final children = <InlineSpan>[];
     final Pattern pattern = RegExp(
         (formatters ?? FormattedTextDefaults.formattedTextDefaultFormatters)
-            .map((formatter) {
-          log('message :: formatter :: ${formatter.pattern}');
-          log('message :: formatter :: ${formatter.patternChars}');
-          return formatter.pattern;
-        }).join('|'),
+            .map((formatter) => formatter.pattern)
+            .join('|'),
         multiLine: true);
-
-    log('message ::: patttern  :: $pattern');
 
     data.splitMapJoin(
       pattern,
@@ -35,7 +28,6 @@ mixin FormattedTextUtils {
         for (final entry in (formatters ??
             FormattedTextDefaults.formattedTextDefaultFormatters)) {
           final pattern = entry.pattern;
-          log('message ::: pattern  :: $pattern');
           if (RegExp(pattern).hasMatch(matchStr)) {
             myStyle = myStyle.merge(entry.style);
             prefixLength += entry.patternChars.length;
@@ -57,11 +49,11 @@ mixin FormattedTextUtils {
         if (showFormattingCharacters) {
           children.add(_getSuffixTextSpan(context, matchStr, prefixLength));
         }
-        return "";
+        return '';
       },
       onNonMatch: (String text) {
         children.add(TextSpan(text: text, style: style));
-        return "";
+        return '';
       },
     );
 

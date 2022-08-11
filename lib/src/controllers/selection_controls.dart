@@ -133,7 +133,7 @@ class FormattedTextToolbarState extends State<FormattedTextToolbar> {
   }
 
   void _formatText(String patternChars) {
-    final TextEditingValue value = widget.delegate.textEditingValue;
+    final value = widget.delegate.textEditingValue;
 
     widget.delegate.userUpdateTextEditingValue(
       TextEditingValue(
@@ -153,8 +153,7 @@ class FormattedTextToolbarState extends State<FormattedTextToolbar> {
   @override
   Widget build(BuildContext context) {
     assert(debugCheckHasMaterialLocalizations(context));
-    final MaterialLocalizations localizations =
-        MaterialLocalizations.of(context);
+    final localizations = MaterialLocalizations.of(context);
     return TextSelectionToolbar(
       anchorAbove: widget.anchorAbove,
       anchorBelow: widget.anchorBelow,

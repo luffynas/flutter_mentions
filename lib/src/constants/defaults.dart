@@ -22,10 +22,10 @@ mixin FormattedTextDefaults {
       patternChars: '#',
       style: TextStyle(decoration: TextDecoration.underline),
     ),
-    // FormattedTextFormatter2(
-    //   patternChars: '@',
-    //   style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
-    // ),
+    FormattedTextFormatter2(
+      patternChars: '@',
+      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
+    ),
   ];
 
   static const List<FormattedTextToolbarAction>
