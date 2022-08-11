@@ -126,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     {'id': 'javascript', 'display': 'javascript'},
                   ],
                   matchAll: true,
-                )
+                ),
               ],
             ),
           ),
