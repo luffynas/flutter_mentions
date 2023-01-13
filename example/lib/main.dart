@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
           FormattedText(
             'helo @[nas:61as61fsa] (__fayeedP__) #good# ~adfadf~',
           ),
-          RaisedButton(
+          TextButton(
             child: Text('Get Text'),
             onPressed: () {
               print(key.currentState!.controller!.markupText);
@@ -58,6 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
               maxLines: 5,
               minLines: 1,
               decoration: InputDecoration(hintText: 'hello'),
+              enableInteractiveSelection: true,
               mentions: [
                 Mention(
                     trigger: '@',
@@ -132,7 +133,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   matchAll: true,
                 ),
               ],
-              enableInteractiveSelection: true,
+              leading: [SizedBox(width: 16)],
+              trailing: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.attach_file_outlined,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.send_outlined,
+                  ),
+                ),
+              ],
             ),
           ),
           Row(
