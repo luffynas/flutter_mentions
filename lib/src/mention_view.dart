@@ -29,6 +29,7 @@ class FlutterMentions extends StatefulWidget {
     this.minLines,
     this.expands = false,
     this.readOnly = false,
+    this.contentPadding,
     this.showCursor,
     this.maxLength,
     this.maxLengthEnforcement = MaxLengthEnforcement.none,
@@ -163,6 +164,10 @@ class FlutterMentions extends StatefulWidget {
   /// The maximum number of characters (Unicode scalar values) to allow in the
   /// text field.
   final int? maxLength;
+
+  /// Set the content padding of Overlay Content
+  /// EdgeInsetsGeometry.
+  final EdgeInsetsGeometry? contentPadding;
 
   /// If true, prevents the field from allowing more than [maxLength]
   /// characters.
@@ -432,6 +437,7 @@ class FlutterMentionsState extends State<FlutterMentions> {
           builder: (BuildContext context, bool show, Widget? child) {
             return show && !widget.hideSuggestionList
                 ? OptionList(
+                    padding: widget.contentPadding,
                     suggestionListHeight: widget.suggestionListHeight,
                     suggestionBuilder: list.suggestionBuilder,
                     suggestionListDecoration: widget.suggestionListDecoration,
