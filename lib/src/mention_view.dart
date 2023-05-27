@@ -52,7 +52,7 @@ class FlutterMentions extends StatefulWidget {
     this.hideSuggestionList = false,
     this.onSuggestionVisibleChanged,
     this.textSelectionControls,
-    this.isShowTextSelectionControls = true,
+    this.enableSelectionControls = true,
   }) : super(key: key);
 
   final bool hideSuggestionList;
@@ -252,7 +252,7 @@ class FlutterMentions extends StatefulWidget {
   final TextSelectionControls? textSelectionControls;
 
   /// Visible TextSelectionControl
-  final bool isShowTextSelectionControls;
+  final bool enableSelectionControls;
 
   @override
   FlutterMentionsState createState() => FlutterMentionsState();
@@ -503,7 +503,7 @@ class FlutterMentionsState extends State<FlutterMentions> {
                 scrollPadding: widget.scrollPadding,
                 scrollPhysics: widget.scrollPhysics,
                 controller: controller,
-                selectionControls: widget.isShowTextSelectionControls
+                selectionControls: widget.enableSelectionControls
                     ? FormattedTextSelectionControls(
                         actions: FormattedTextDefaults
                             .formattedTextToolbarDefaultActions,
