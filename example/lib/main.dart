@@ -59,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
               minLines: 1,
               decoration: InputDecoration(hintText: 'hello'),
               enableInteractiveSelection: true,
+              isShowTextSelectionControls: false,
               mentions: [
                 Mention(
                     trigger: '@',

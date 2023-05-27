@@ -51,6 +51,8 @@ class FlutterMentions extends StatefulWidget {
     this.appendSpaceOnAdd = true,
     this.hideSuggestionList = false,
     this.onSuggestionVisibleChanged,
+    this.textSelectionControls,
+    this.isShowTextSelectionControls = true,
   }) : super(key: key);
 
   final bool hideSuggestionList;
@@ -245,6 +247,12 @@ class FlutterMentions extends StatefulWidget {
   /// {@macro flutter.widgets.editableText.autofillHints}
   /// {@macro flutter.services.autofill.autofillHints}
   final Iterable<String>? autofillHints;
+
+  /// TextSelectionControl
+  final TextSelectionControls? textSelectionControls;
+
+  /// Visible TextSelectionControl
+  final bool isShowTextSelectionControls;
 
   @override
   FlutterMentionsState createState() => FlutterMentionsState();
@@ -495,10 +503,12 @@ class FlutterMentionsState extends State<FlutterMentions> {
                 scrollPadding: widget.scrollPadding,
                 scrollPhysics: widget.scrollPhysics,
                 controller: controller,
-                selectionControls: FormattedTextSelectionControls(
-                  actions:
-                      FormattedTextDefaults.formattedTextToolbarDefaultActions,
-                ),
+                selectionControls: widget.isShowTextSelectionControls
+                    ? FormattedTextSelectionControls(
+                        actions: FormattedTextDefaults
+                            .formattedTextToolbarDefaultActions,
+                      )
+                    : widget.textSelectionControls,
               ),
             ),
             ...widget.trailing,
